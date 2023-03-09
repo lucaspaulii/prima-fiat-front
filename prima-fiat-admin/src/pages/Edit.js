@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import service from "../services/services.js";
 import { MainContainer } from "./Main.js";
 
 export default function Edit(params) {
@@ -7,14 +8,33 @@ export default function Edit(params) {
   const [orderNumber, setOrderNumber] = useState(undefined);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    console.log(action);
-  }, [action]);
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (action === "delay") {
+      if (!deliveryDate) {
+        alert("remarque a data de entrega");
+        return;
+      }
+      service.delayOrder(orderNumber, setLoading, deliveryDate);
+    }
+    if (action === "deliver") {
+      service.deliverOrder(orderNumber, setLoading);
+    }
+    setTimeout(() => {
+      clearAll();
+    }, [1000])
+  }
+
+  function clearAll() {
+    setAction("deliver");
+    setDeliveryDate("");
+    setOrderNumber("");
+  }
 
   return (
     <MainContainer>
-      <form>
-      <p>Número do Pedido:</p>
+      <form onSubmit={handleSubmit}>
+        <p>Número do Pedido:</p>
         <input
           type="number"
           placeholder="Preencha aqui!"
@@ -52,7 +72,9 @@ export default function Edit(params) {
           onChange={(e) => setDeliveryDate(e.target.value)}
           hidden={action === "delay" ? false : true}
         ></input>
-        <button type="submit" disabled={loading ? true : false}>{loading ? true : "Enviar"}</button>
+        <button type="submit" disabled={loading ? true : false}>
+          {loading ? "Loading..." : "Enviar"}
+        </button>
       </form>
     </MainContainer>
   );

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import service from "../services/services";
 
 export default function Main(params) {
   const [orderNumber, setOrderNumber] = useState(undefined);
@@ -11,13 +12,36 @@ export default function Main(params) {
   const [seller, setSeller] = useState(undefined);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    console.log(deliveryDate);
-  }, [deliveryDate]);
+  function handleSubmit(e) {
+    e.preventDefault();
+    const order = {
+      orderNumber,
+      deliveryDate,
+      customer,
+      model,
+      color,
+      chassi,
+      seller,
+    };
+    service.postOrder(order, setLoading);
+    setTimeout(() => {
+      clearAll();
+    }, [1000])
+  }
+
+  function clearAll() {
+    setOrderNumber("");
+    setDeliveryDate("");
+    setCustomer("");
+    setModel("");
+    setColor("");
+    setChassi("");
+    setSeller("");
+  }
 
   return (
     <MainContainer>
-      <form>
+      <form onSubmit={handleSubmit}>
         <p>Número do Pedido:</p>
         <input
           type="number"
@@ -74,7 +98,9 @@ export default function Main(params) {
           value={seller}
           onChange={(e) => setSeller(e.target.value)}
         ></input>
-        <button type="submit" disabled={loading ? true : false}>{loading ? true : "Enviar"}</button>
+        <button type="submit" disabled={loading ? true : false}>
+          {loading ? true : "Enviar"}
+        </button>
       </form>
     </MainContainer>
   );
@@ -129,11 +155,11 @@ export const MainContainer = styled.div`
     justify-content: center;
     width: 500px;
     div {
-        width: 250px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+      width: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
   }
 `;
