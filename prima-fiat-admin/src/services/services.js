@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://127.0.0.1:4000";
+const url = "https://primafiat.onrender.com";
 
 async function postOrder(order, setLoading) {
   setLoading(true);
@@ -19,17 +19,16 @@ async function deliverOrder(orderId, setLoading) {
   try {
     const order = await axios.get(`${url}/order/${orderId}`);
     console.log(order);
-    if (!order[0].id) {
+    if (!order || !order.data[0]?.id === undefined) {
       throw new Error("número de pedido inválido");
     }
-    await axios.put(`${url}/delivered/${order[0].id}`);
-    alert("Pedido entregue com suceso!");
-    setLoading(false);
+    await axios.put(`${url}/delivered/${order.data[0].id}`);
   } catch (error) {
-    if (error.response.data.message === "No result for this search!") {
+    console.log(error)
+    if (error.response.data?.message === "No result for this search!") {
       alert("Pedido já foi remarcado/entregue ou não existe");
     }
-    if (error.response.data.name === "InvalidInputError") {
+    if (error.response.data?.name === "InvalidInputError") {
       alert(error.response.data.message);
     }
     setLoading(false);

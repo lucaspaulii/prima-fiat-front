@@ -19,10 +19,12 @@ export default function Edit(params) {
     }
     if (action === "deliver") {
       service.deliverOrder(orderNumber, setLoading);
+      alert("Pedido entregue com suceso!");
+      setLoading(false);
     }
     setTimeout(() => {
       clearAll();
-    }, [1000])
+    }, [1000]);
   }
 
   function clearAll() {

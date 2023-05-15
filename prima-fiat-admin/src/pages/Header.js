@@ -17,7 +17,7 @@ top: 0;
 left: 0;
 height: 80px;
 width: 100vw;
-background-color: rgb(229, 67, 46);
+background-color: rgb(163, 54, 69);
 display: flex;
 justify-content: center;
 align-items: center;
