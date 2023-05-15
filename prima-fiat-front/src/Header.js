@@ -17,13 +17,14 @@ export default function Header({ time, setTime }) {
 const Container = styled.div`
   height: 30%;
   width: 100%;
-  background-color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
 
   h1 {
     font-size: 100px;
+    width: 50%;
+    text-align: center;
     color: #fff;
     font-family: "Passion One", cursive;
   }

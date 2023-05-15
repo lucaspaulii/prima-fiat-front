@@ -15,16 +15,20 @@ export default function Clock({ time, setTime }) {
 }
 
 const ClockContainer = styled.div`
-  width: 18vw;
-  height: 7vw;
-  background-color: #222;
+  width: 24vw;
+  height: 10vw;
+  margin-left: 20px;
+  background-color: black;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 3.7vw;
-  font-weight: 200;
-  color: #fff;
+  font-size: 210px;
+  color: #39ff14;
   margin-right: 2vw;
   font-weight: 400;
-  font-family: "Oxygen Mono", monospace;
+  /* font-family: "Roboto", sans-serif; */
+  font-family: 'Share Tech', sans-serif;
+  border-radius: 10px;
+  border: 8px solid #777;
 `;

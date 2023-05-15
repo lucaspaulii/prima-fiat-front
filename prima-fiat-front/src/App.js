@@ -99,7 +99,7 @@ function App() {
                 margin={isNext ? "2vh 0 4vh 0" : "0 0 2vh 0"}
               >
                 <InfoBox boxWidth={"11.11%"}>
-                  <h2>Número do pedido:</h2>
+                  <h2>N° do pedido:</h2>
                   <p>{a.orderNumber}</p>
                 </InfoBox>
                 <InfoBox boxWidth={"11.11%"}>
@@ -150,7 +150,7 @@ function App() {
 const AppContainer = styled.div`
   height: 100vh;
   width: 100%;
-  background-color: #ffffff;
+  background: linear-gradient(90deg, rgba(0,0,0,1) 45%, rgba(100,100,100) 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -159,16 +159,18 @@ const AppContainer = styled.div`
 `;
 
 const InfoContainer = styled.div`
-  background-color: rgb(163, 54, 69);
+  background-color: rgba(300, 300, 300, 0.6);
   box-sizing: border-box;
-  padding: 5vh;
+  padding: 2vh;
   height: 70%;
-  width: 100%;
+  width: 95%;
+  margin-bottom: 50px;
   display: flex;
   flex-direction: column;
   justify-content: top;
   align-items: center;
   overflow: scroll;
+  border-radius: 10px;
 
   /* Hide scrollbar for Chrome, Safari and Opera */
   ::-webkit-scrollbar {
