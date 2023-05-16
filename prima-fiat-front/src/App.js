@@ -37,7 +37,11 @@ function App() {
         const newDate = handleDate(obj[i].deliveryDate);
         const intNewDate = dateToInteger(newDate);
         const intNow = dateToInteger(time);
-        if (intNewDate - intNow < smallestDiff && intNewDate - intNow > 0) {
+        if (
+          intNewDate - intNow < smallestDiff &&
+          intNewDate - intNow > 0 &&
+          obj[i].status == "TOBEDELIVERED"
+        ) {
           smallestDiff = intNewDate - intNow;
           nextId = obj[i].id;
         }

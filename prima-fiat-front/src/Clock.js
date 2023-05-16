@@ -7,11 +7,12 @@ export default function Clock({ time, setTime }) {
       const date = new Date().toLocaleTimeString(navigator.language, {
         hour: "2-digit",
         minute: "2-digit",
+        second: "2-digit",
       });
       setTime(date);
     }, 1000);
   }, []);
-  return <ClockContainer>{time}</ClockContainer>;
+  return <ClockContainer>{time.slice(0, -3)}</ClockContainer>;
 }
 
 const ClockContainer = styled.div`
@@ -28,7 +29,7 @@ const ClockContainer = styled.div`
   margin-right: 2vw;
   font-weight: 400;
   /* font-family: "Roboto", sans-serif; */
-  font-family: 'Share Tech', sans-serif;
+  font-family: "Share Tech", sans-serif;
   border-radius: 10px;
   border: 8px solid #777;
 `;
