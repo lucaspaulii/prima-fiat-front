@@ -12,7 +12,7 @@ export default function Clock({ time, setTime }) {
       setTime(date);
     }, 1000);
   }, []);
-  return <ClockContainer>{time.slice(0, -3)}</ClockContainer>;
+  return <ClockContainer>{time?.slice(0, -3)}</ClockContainer>;
 }
 
 const ClockContainer = styled.div`
