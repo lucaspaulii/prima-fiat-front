@@ -11,10 +11,8 @@ function App() {
   const [nearest, setNearest] = useState();
 
   useEffect(() => {
-    setInterval(() => {
-      setUpdate(!update);
-    }, 10000);
-  }, []);
+    setUpdate(!update);
+  }, [time]);
 
   useEffect(() => {
     const loadData = async () => {
@@ -150,7 +148,11 @@ function App() {
 const AppContainer = styled.div`
   height: 100vh;
   width: 100%;
-  background: linear-gradient(90deg, rgba(0,0,0,1) 45%, rgba(100,100,100) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 45%,
+    rgba(100, 100, 100) 100%
+  );
   display: flex;
   flex-direction: column;
   align-items: center;
