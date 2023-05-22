@@ -162,6 +162,7 @@ const AppContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   font-family: "Roboto", sans-serif;
+  overflow: hidden;
 `;
 
 const InfoContainer = styled.div`

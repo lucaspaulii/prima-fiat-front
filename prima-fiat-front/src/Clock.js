@@ -16,8 +16,8 @@ export default function Clock({ time, setTime }) {
 }
 
 const ClockContainer = styled.div`
-  width: 24vw;
-  height: 10vw;
+  width: 450px;
+  height: 190px;
   margin-left: 20px;
   background-color: black;
   padding: 10px;
