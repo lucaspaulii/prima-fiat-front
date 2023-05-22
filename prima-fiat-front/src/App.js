@@ -81,6 +81,15 @@ function App() {
     <AppContainer>
       <Header time={time} setTime={setTime} />
       <InfoContainer>
+        <InfoHeader>
+          <HeaderText boxWidth={"6%"}>Horário</HeaderText>
+          <HeaderText boxWidth={"23%"}>Cliente</HeaderText>
+          <HeaderText boxWidth={"12%"}>Modelo</HeaderText>
+          <HeaderText boxWidth={"11%"}>Cor</HeaderText>
+          <HeaderText boxWidth={"23%"}>Chassi</HeaderText>
+          <HeaderText boxWidth={"14%"}>Vendedor</HeaderText>
+          <HeaderText boxWidth={"11%"}>Status</HeaderText>
+        </InfoHeader>
         {order ? (
           order?.map((a) => {
             const newDate = handleDate(a.deliveryDate);
@@ -100,36 +109,29 @@ function App() {
                 brightness={isPast ? "1" : "1"}
                 margin={isNext ? "2vh 0 4vh 0" : "0 0 2vh 0"}
               >
-                <InfoBox boxWidth={"11.11%"}>
-                  <h2>N° do pedido:</h2>
-                  <p>{a.orderNumber}</p>
-                </InfoBox>
-                <InfoBox boxWidth={"11.11%"}>
-                  <h2>Horário de Entrega:</h2>
+                <InfoBox boxWidth={"6%"}>
                   <p>{newDate}</p>
                 </InfoBox>
-                <InfoBox boxWidth={"22.23%"}>
-                  <h2>Cliente:</h2>
-                  <p>{a.customer}</p>
+                <InfoBox boxWidth={"23%"}>
+                  {/*<p>{a.customer}</p>*/}
+                  <p>Rodrigo da Silva Costa</p>
                 </InfoBox>
-                <InfoBox boxWidth={"11.11%"}>
-                  <h2>Modelo:</h2>
-                  <p>{a.model}</p>
+                <InfoBox boxWidth={"12%"}>
+                  {/*<p>{a.model}</p>*/}
+                  <p>Chronos</p>
                 </InfoBox>
-                <InfoBox boxWidth={"11.11%"}>
-                  <h2>Cor:</h2>
-                  <p>{a.color}</p>
+                <InfoBox boxWidth={"11%"}>
+                  {/*<p>{a.color}</p>*/}
+                  <p>Vermelho</p>
                 </InfoBox>
-                <InfoBox boxWidth={"11.11%"}>
-                  <h2>Chassi:</h2>
-                  <p>{a.chassi}</p>
+                <InfoBox boxWidth={"23%"}>
+                  {/*<p>{a.chassi}</p>*/}
+                  <p>LVVDA11A75D029813</p>
                 </InfoBox>
-                <InfoBox boxWidth={"11.11%"}>
-                  <h2>Vendedor:</h2>
+                <InfoBox boxWidth={"14%"}>
                   <p>{a.seller}</p>
                 </InfoBox>
-                <InfoBox boxWidth={"11.11%"}>
-                  <h2>Status</h2>
+                <InfoBox boxWidth={"11%"}>
                   <p>
                     {a.status === "TOBEDELIVERED"
                       ? "À ENTREGAR"
@@ -194,12 +196,30 @@ const InfoContainer = styled.div`
   }
 `;
 
+const InfoHeader = styled.div`
+  display: flex;
+  width: 100%;
+  font-size: 25px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 15px;
+  p:first-child {
+    border-left: 5px solid #666;
+  }
+`;
+
+const HeaderText = styled.p`
+  width: ${(props) => props.boxWidth};
+  text-align: center;
+  border-right: 5px solid #666;
+`
+
 const InfoCard = styled.div`
   box-sizing: border-box;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 15%;
+  height: 14%;
   width: 100%;
   background-color: ${(props) => props.backgroundColor};
   ${(props) =>
@@ -226,17 +246,10 @@ const InfoBox = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  h2 {
-    margin-bottom: 5px;
-    font-weight: 400;
-    font-size: 2vh;
-    width: 100%;
-    text-align: center;
-  }
   p {
     width: 100%;
-    font-size: 2.5vh;
-    font-weight: 700;
+    font-size: 3.7vh;
+    font-weight:600;
     text-align: center;
   }
 `;
