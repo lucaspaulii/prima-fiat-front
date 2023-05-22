@@ -82,13 +82,14 @@ function App() {
       <Header time={time} setTime={setTime} />
       <InfoContainer>
         <InfoHeader>
-          <HeaderText boxWidth={"6%"}>Horário</HeaderText>
-          <HeaderText boxWidth={"23%"}>Cliente</HeaderText>
-          <HeaderText boxWidth={"12%"}>Modelo</HeaderText>
-          <HeaderText boxWidth={"11%"}>Cor</HeaderText>
-          <HeaderText boxWidth={"23%"}>Chassi</HeaderText>
-          <HeaderText boxWidth={"14%"}>Vendedor</HeaderText>
-          <HeaderText boxWidth={"11%"}>Status</HeaderText>
+        <HeaderText boxWidth={"7%"}>N°</HeaderText>
+          <HeaderText boxWidth={"5%"}>Hora</HeaderText>
+          <HeaderText boxWidth={"20%"}>Cliente</HeaderText>
+          <HeaderText boxWidth={"10%"}>Modelo</HeaderText>
+          <HeaderText boxWidth={"12%"}>Cor</HeaderText>
+          <HeaderText boxWidth={"20%"}>Chassi</HeaderText>
+          <HeaderText boxWidth={"12%"}>Vendedor</HeaderText>
+          <HeaderText boxWidth={"12%"}>Status</HeaderText>
         </InfoHeader>
         {order ? (
           order?.map((a) => {
@@ -109,29 +110,28 @@ function App() {
                 brightness={isPast ? "1" : "1"}
                 margin={isNext ? "2vh 0 4vh 0" : "0 0 2vh 0"}
               >
-                <InfoBox boxWidth={"6%"}>
+                <InfoBox boxWidth={"7%"} smaller={true}>
+                  <p>{a.orderNumber}</p>
+                </InfoBox>
+                <InfoBox boxWidth={"5%"}>
                   <p>{newDate}</p>
                 </InfoBox>
-                <InfoBox boxWidth={"23%"}>
-                  {/*<p>{a.customer}</p>*/}
-                  <p>Rodrigo da Silva Costa</p>
+                <InfoBox boxWidth={"20%"}>
+                  <p>{a.customer}</p>
+                </InfoBox>
+                <InfoBox boxWidth={"10%"}>
+                  <p>{a.model}</p>
                 </InfoBox>
                 <InfoBox boxWidth={"12%"}>
-                  {/*<p>{a.model}</p>*/}
-                  <p>Chronos</p>
+                  <p>{a.color}</p>
                 </InfoBox>
-                <InfoBox boxWidth={"11%"}>
-                  {/*<p>{a.color}</p>*/}
-                  <p>Vermelho</p>
+                <InfoBox boxWidth={"20%"}>
+                  <p>{a.chassi}</p>
                 </InfoBox>
-                <InfoBox boxWidth={"23%"}>
-                  {/*<p>{a.chassi}</p>*/}
-                  <p>LVVDA11A75D029813</p>
-                </InfoBox>
-                <InfoBox boxWidth={"14%"}>
+                <InfoBox boxWidth={"12%"}>
                   <p>{a.seller}</p>
                 </InfoBox>
-                <InfoBox boxWidth={"11%"}>
+                <InfoBox boxWidth={"12%"}>
                   <p>
                     {a.status === "TOBEDELIVERED"
                       ? "À ENTREGAR"
@@ -200,18 +200,18 @@ const InfoHeader = styled.div`
   display: flex;
   width: 100%;
   font-size: 25px;
-  font-weight: 700;
+  font-weight: 500;
   color: white;
   margin-bottom: 15px;
   p:first-child {
-    border-left: 5px solid #666;
+    border-left: 3px solid #666;
   }
 `;
 
 const HeaderText = styled.p`
   width: ${(props) => props.boxWidth};
   text-align: center;
-  border-right: 5px solid #666;
+  border-right: 3px solid #666;
 `
 
 const InfoCard = styled.div`
@@ -248,10 +248,16 @@ const InfoBox = styled.div`
   overflow: hidden;
   p {
     width: 100%;
-    font-size: 3.7vh;
-    font-weight:600;
+    font-size: 3.1vh;
+    font-weight:500;
     text-align: center;
   }
+  ${(props) =>
+    props.smaller === true &&
+    css`
+      scale: 60%;
+      color: #666;
+    `}
 `;
 
 const animation = keyframes`
